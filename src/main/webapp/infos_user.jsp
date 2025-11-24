@@ -8,12 +8,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <jsp:useBean id="User" scope="request" class="fr.devavance.metier.beans.User" />
+<jsp:setProperty name="User" property="username" value="Pierre" />
+<jsp:setProperty name="User" property="passeword" value="admin" />
+<jsp:setProperty name="User" property="profil" value="yakoulou" />
 
-<jsp:getProperty name="User" property="userName" />
-<jsp:getProperty name="User" property="password" />
-<jsp:getProperty name="User" property="profil" />
 
-<jsp:setProperty name="User" property="userName" value="Dalla" />
+<jsp:useBean id="User2" scope="request" class="fr.devavance.metier.beans.User" />
+<jsp:setProperty name="User2" property="username" param="KEY_USER_NAME" />
 
 
 <%-- Déclaration des des beans qui sont utilisés --%>
@@ -28,9 +29,11 @@
         
         <div class="info_user">
             
-            <p><jsp:setProperty name="User" property="userName" value="Dalla" /></p>
-            <p> <%=System.out.println( User.getUsername()) %></p>
-            <p> <%= User.setUsername("Dalla") %></p>
+            <% out.println("<p>"+User2.getUsername()+"</p>");%>
+         
+           <p>  Name : <jsp:getProperty name="User" property="username" /></p>
+           <p> Password :  <jsp:getProperty name="User" property="passeword" /></p>
+           <p> Profil :  <jsp:getProperty name="User" property="profil" /></p>
 
         </div>
      
